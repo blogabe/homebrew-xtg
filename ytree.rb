@@ -6,9 +6,6 @@ class Ytree < Formula
   sha1 "d9f66b41bda7ed28414a56388d0d9fb6ed3975c2"
 
   def install
-    # ENV.deparallelize
-    # ENV.no_optimization
-
     mkpath "#{buildpath}/hb-pkg/bin"
     mkpath "#{buildpath}/hb-pkg/share/man/man1"
     mkpath "#{buildpath}/hb-pkg/share/man/es/man1"
