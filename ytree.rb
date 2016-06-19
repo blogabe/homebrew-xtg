@@ -1,9 +1,8 @@
-require "formula"
-
 class Ytree < Formula
+  desc "Ytree; a UNIX Filemanager - a (curses-based) file manager similar to DOS Xtree(tm)"
   homepage "http://www.han.de/~werner/ytree.html"
-  url "http://www.han.de/~werner/ytree-1.97.tar.gz"
-  sha1 "d9f66b41bda7ed28414a56388d0d9fb6ed3975c2"
+  url "http://www.han.de/~werner/ytree-1.98.tar.gz"
+  sha256 "e7264e1c112bf62aba1f6ed0078308930cd8f01317a157ed1718b8dac09195c5"
 
   def install
     mkpath "#{buildpath}/hb-pkg/bin"
