@@ -6,7 +6,6 @@ class Xt < Formula
 
   def install
     ENV.deparallelize
-    ENV.no_optimization
     ENV.append "INS_DIR", "#{buildpath}/hb-pkg"
     system "bash -c 'source build -r osx && /bin/bash make install'"
 
