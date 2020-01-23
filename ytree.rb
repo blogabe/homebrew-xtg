@@ -1,8 +1,7 @@
 class Ytree < Formula
   desc "Ytree; a UNIX Filemanager - a (curses-based) file manager similar to DOS Xtree(tm)"
   homepage "http://www.han.de/~werner/ytree.html"
-  url "http://www.han.de/~werner/ytree-1.99pl1.tar.gz"
-  version "1.99"
+  url "https://www.han.de/~werner/ytree-2.00.tar.gz"
   sha256 "763e8c2af528174cd738ed8f2eca62579e3edef57ccbd242be7cf181ae15d251"
 
   def install
