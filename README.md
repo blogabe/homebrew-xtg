@@ -1,7 +1,7 @@
 homebrew-xtg
 ============
 
-XTree Gold Unix Clones for Mac OS X / macOS
+XTree Gold Unix Clones for macOS
 
 Installation
 ------------
