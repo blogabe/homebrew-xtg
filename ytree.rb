@@ -6,17 +6,10 @@ class Ytree < Formula
   license "GPL-2.0-or-later"
 
   def install
-    inreplace "Makefile" do |s|
-      s.gsub! "DESTDIR     = /usr", "DESTDIR     = #{prefix}"
-      s.gsub! "COLOR       = -DCOLOR_SUPPORT", "#COLOR       = -DCOLOR_SUPPORT"
-      s.gsub! "READLINE    = -DREADLINE_SUPPORT", "#READLINE    = -DREADLINE_SUPPORT"
-      s.gsub! "CFLAGS      += -D_GNU_SOURCE $(COLOR) $(CLOCK) $(READLINE) $(ADD_CFLAGS)",
-              "#CFLAGS      += -D_GNU_SOURCE $(COLOR) $(CLOCK) $(READLINE) $(ADD_CFLAGS)"
-      s.gsub! "LDFLAGS     += -lncurses -lreadline", "#LDFLAGS     += -lncurses -lreadline"
-      s.gsub! "#CFLAGS      = -DCOLOR_SUPPORT -DNCURSES", "CFLAGS      = -DCOLOR_SUPPORT -DNCURSES"
-      s.gsub! "#LDFLAGS     = -lncurses", "LDFLAGS     = -lncurses"
-    end
-    system "make", "install"
+    system "make", "install",
+           "DESTDIR=#{prefix}",
+           "CFLAGS=-DCOLOR_SUPPORT -DNCURSES",
+           "LDFLAGS=-lncurses"
     (share/"ytree").install "ytree.conf"
   end
 end
