@@ -8,6 +8,10 @@ class Xt < Formula
   def install
     ENV.deparallelize
     ENV["INS_DIR"] = "#{buildpath}/hb-pkg"
+    # Fix missing return type rejected by C99 and later
+    inreplace "libres/resmkch.c",
+              "static res_get_list (RES_LIST *rl, char *msgbuf)",
+              "static int res_get_list (RES_LIST *rl, char *msgbuf)"
     system "bash", "-c", "source build -r osx && /bin/bash make install"
 
     cd "#{buildpath}/hb-pkg" do
