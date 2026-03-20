@@ -1,18 +1,23 @@
 class Xt < Formula
-  desc "UnixTree, formerly known as \"xtree for UNIX Systems\", now is a powerful, XTree-alike filemanager for Unix/Linux"
-  homepage "http://www.unixtree.org/"
-  url "https://downloads.sourceforge.net/project/unixtree/unixtree/3.0.2/xt-source-3.0.2.tar.gz"
-  sha256 "7d131012429212e870911bbae741ae8552901319aad8bad16330432548882b44"
+  desc "XTree-alike file manager for Unix systems"
+  homepage "https://github.com/dokakod/unixtree"
+  url "https://github.com/dokakod/unixtree/archive/refs/tags/v3.0.4.tar.gz"
+  sha256 "be5f39f66cca83d4691c72203c093968a6ccf8eab46ab3bf39c833cc8f48fd1c"
+  license "GPL-2.0-only"
 
   def install
     ENV.deparallelize
-    ENV.append "INS_DIR", "#{buildpath}/hb-pkg"
-    system "bash -c 'source build -r osx && /bin/bash make install'"
+    ENV["INS_DIR"] = "#{buildpath}/hb-pkg"
+    system "bash", "-c", "source build -r osx && /bin/bash make install"
 
-    cd "#{buildpath}/hb-pkg"
-    prefix.install "FILES", "FILES-UTILS", "INSTALL", "TERMFILES"
-    bin.install "dispblks", "dispbox", "dispchrs", "dispclrs", "dispkeys", "dispsnap", "dispterm", "dumpterm", "pcxterm", "playback", "restool", "saveterm", "termput", "xt", "xtx"
-    share.install "man", "catman"
-    (share/"xt").install "trm", "english.hlp", "english.res", "german.hlp", "german.res", "magic", "sample.rc", "xt.fc", "xt.mnu"
+    cd "#{buildpath}/hb-pkg" do
+      prefix.install "FILES", "FILES-UTILS", "INSTALL", "TERMFILES"
+      bin.install "dispblks", "dispbox", "dispchrs", "dispclrs", "dispkeys", "dispsnap",
+                  "dispterm", "dumpterm", "pcxterm", "playback", "restool", "saveterm",
+                  "termput", "xt", "xtx"
+      share.install "man", "catman"
+      (share/"xt").install "trm", "english.hlp", "english.res", "german.hlp", "german.res",
+                           "magic", "sample.rc", "xt.fc", "xt.mnu"
+    end
   end
 end
