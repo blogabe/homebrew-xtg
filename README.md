@@ -7,4 +7,6 @@ Installation
 ------------
 Tap: ```brew tap blogabe/xtg```
 
-Install: ```brew install blogabe/xtg/<formula>```
+Install UnixTree: ```brew install blogabe/xtg/xt```
+
+Install Ytree: ```brew install blogabe/xtg/ytree```
