@@ -4,6 +4,7 @@ class Xt < Formula
   url "https://github.com/dokakod/unixtree/archive/refs/tags/v3.0.4.tar.gz"
   sha256 "be5f39f66cca83d4691c72203c093968a6ccf8eab46ab3bf39c833cc8f48fd1c"
   license "GPL-2.0-only"
+  revision 1
 
   def install
     ENV.deparallelize
@@ -16,12 +17,16 @@ class Xt < Formula
 
     cd "#{buildpath}/hb-pkg" do
       prefix.install "FILES", "FILES-UTILS", "INSTALL", "TERMFILES"
-      bin.install "dispblks", "dispbox", "dispchrs", "dispclrs", "dispkeys", "dispsnap",
-                  "dispterm", "dumpterm", "pcxterm", "playback", "restool", "saveterm",
-                  "termput", "xt", "xtx"
+      executables = %w[
+        dispblks dispbox dispchrs dispclrs dispkeys dispsnap dispterm dumpterm
+        pcxterm playback restool saveterm termput xt xtx
+      ]
+      # UnixTree looks for its runtime files beside the actual executable.
+      libexec.install executables
+      bin.write_exec_script executables.map { |executable| libexec/executable }
       share.install "man", "catman"
-      (share/"xt").install "trm", "english.hlp", "english.res", "german.hlp", "german.res",
-                           "magic", "sample.rc", "xt.fc", "xt.mnu"
+      libexec.install "trm", "english.hlp", "english.res", "german.hlp", "german.res",
+                      "magic", "sample.rc", "xt.fc", "xt.mnu"
     end
   end
 end
